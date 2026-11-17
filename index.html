@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>English Speaking Plans</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Inter:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@500&display=swap">
+<style>
+/* Dark-first: dark is the default everywhere; the toggle sets data-look="light" (soft sage, no pure white) */
+:root{
+  --bg:#101917; --surface:#17231f; --ink:#e3ece9; --muted:#9fb3ad; --line:#2a3a35;
+  --accent:#62c3a5; --accent-soft:#1b302a; --gold:#e3ad55; --gold-soft:#2e2617;
+  --display:"Bricolage Grotesque","IBM Plex Sans Arabic","Segoe UI",system-ui,sans-serif;
+  --body:"Inter","IBM Plex Sans Arabic","Segoe UI",system-ui,-apple-system,sans-serif;
+  --arabic:"Noto Naskh Arabic","Traditional Arabic","Segoe UI",serif;
+  color-scheme:dark;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+:root[lang="ar"]{--display:"IBM Plex Sans Arabic","Segoe UI",system-ui,sans-serif;--body:"IBM Plex Sans Arabic","Inter","Segoe UI",system-ui,sans-serif}
+:root[data-look="light"]{
+  --bg:#e9eeeb; --surface:#f3f6f4; --ink:#18302b; --muted:#51655f; --line:#cdd8d3;
+  --accent:#1d6b58; --accent-soft:#d9e8e1; --gold:#8a5a10; --gold-soft:#efe3cc;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6}
+:root[lang="ar"] body{font-size:17px;line-height:1.75}
+img{max-width:100%}[hidden]{display:none!important}
+.wrap{max-width:860px;margin:0 auto;padding-block:32px 64px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  display:flex;flex-direction:column;gap:48px}
+h1,h2,h3{font-family:var(--display);line-height:1.2;text-wrap:balance;margin:0}
+h1{font-size:clamp(2rem,6vw,3rem);font-weight:700}
+h2{font-size:1.6rem;font-weight:700}
+h3{font-size:1.1rem;font-weight:700}
+p{margin:0;max-width:68ch}
+a{color:var(--accent);text-underline-offset:2px}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+section{display:flex;flex-direction:column;gap:16px;scroll-margin-top:16px}
+.eyebrow{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+:root[lang="ar"] .eyebrow{letter-spacing:0;font-size:.85rem}
+.lead{font-size:1.1rem;color:var(--muted)}
+ul,ol{margin:0;padding:0;padding-inline-start:1.3em;display:flex;flex-direction:column;gap:6px}
+.ar{font-family:var(--arabic);font-size:1.15em;direction:rtl;unicode-bidi:isolate}
+.ipa{font-family:"Segoe UI","Noto Sans","Lucida Sans Unicode",sans-serif}
+
+body[data-plan="general"] .only-quran,body[data-plan="quran"] .only-general{display:none!important}
+body[data-plan="none"] section,body[data-plan="none"] footer,body[data-plan="none"] .plan-only{display:none!important}
+body:not([data-plan="none"]) .landing-only{display:none!important}
+
+header{display:flex;flex-direction:column;gap:14px}
+.toprow{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.toplinks{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.look-btn,.pill-link{font:inherit;font-size:.88rem;font-weight:600;cursor:pointer;background:var(--surface);color:var(--ink);border:1.5px solid var(--line);border-radius:999px;padding:5px 12px;text-decoration:none}
+.look-btn:hover,.pill-link:hover{border-color:var(--accent)}
+.facts{display:flex;flex-wrap:wrap;gap:8px}
+.fact{background:var(--accent-soft);color:var(--ink);border-radius:999px;padding:4px 12px;font-size:.9rem;font-weight:500}
+.switch{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.switch button,.switch a{font:inherit;text-align:start;cursor:pointer;background:var(--surface);color:var(--ink);border:1.5px solid var(--line);border-radius:14px;padding:20px 18px;display:flex;flex-direction:column;gap:6px;min-width:0;text-decoration:none}
+.switch button:hover,.switch a:hover{border-color:var(--accent)}
+.switch b{font-family:var(--display);font-size:1.35rem}
+.switch span{font-size:.92rem;color:var(--muted)}
+.switch .go{font-style:normal;font-weight:600;color:var(--accent);margin-top:6px}
+.switch .last{align-self:flex-start;font-size:.75rem;font-weight:600;background:var(--gold-soft);color:var(--gold);border-radius:999px;padding:2px 10px}
+.planbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px}
+.back{font:inherit;font-weight:600;font-size:.92rem;cursor:pointer;background:var(--surface);color:var(--accent);border:1.5px solid var(--line);border-radius:999px;padding:6px 14px}
+.back:hover{border-color:var(--accent)}
+.current{background:var(--accent-soft);border-radius:999px;padding:6px 14px;font-weight:600;font-size:.92rem}
+nav{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.92rem;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding-block:10px}
+nav a{text-decoration:none;font-weight:500}
+.note{background:var(--gold-soft);border-inline-start:3px solid var(--gold);padding:12px 16px;border-radius:8px}
+.note p{max-width:none}
+.checks{list-style:none;padding:0;gap:8px}
+.checks label{display:flex;gap:10px;align-items:flex-start;cursor:pointer}
+.checks input{margin-top:5px;accent-color:var(--accent);width:18px;height:18px;flex:none}
+.routine{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.block{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.block .min{font-variant-numeric:tabular-nums;color:var(--gold);font-weight:600;font-size:.9rem}
+.tablebox{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:.95rem}
+th,td{text-align:start;vertical-align:top;padding:10px 14px;border-bottom:1px solid var(--line)}
+th{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600}
+:root[lang="ar"] th{letter-spacing:0;font-size:.85rem}
+tbody tr:last-child td{border-bottom:none}
+td:first-child{font-weight:600}
+.phase{display:flex;flex-direction:column;gap:12px}
+.phase-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px}
+.weeks{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
+.week{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.week.done{border-color:var(--accent);background:var(--accent-soft)}
+.week-top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.week-top b{font-family:var(--display);font-size:1.05rem}
+.week-top label{font-size:.85rem;color:var(--muted);display:flex;gap:6px;align-items:center;cursor:pointer}
+.week-top input{accent-color:var(--accent);width:16px;height:16px}
+.row{display:grid;grid-template-columns:70px 1fr;gap:8px;font-size:.92rem}
+.row span:first-child{color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;padding-top:2px}
+.sound{color:var(--gold);font-weight:600}
+.uses{display:flex;flex-wrap:wrap;gap:4px 10px}
+.pairs{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}
+.phrases{list-style:none;padding:0;gap:4px}
+.phrases li{padding:6px 0;border-bottom:1px dashed var(--line)}
+.phrases li:last-child{border-bottom:none}
+.prompt{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;font-size:.95rem;white-space:pre-wrap;overflow-wrap:anywhere;text-align:left}
+.copy{align-self:flex-start;font:inherit;font-weight:600;font-size:.9rem;background:var(--accent);color:var(--bg);border:0;border-radius:8px;padding:8px 14px;cursor:pointer}
+.res{display:flex;flex-direction:column;gap:10px}
+.res h3{margin-top:8px}
+.res ul{list-style:none;padding:0;gap:8px}
+.res li{display:flex;flex-direction:column;gap:0}
+.res li span{color:var(--muted);font-size:.92rem}
+footer{color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padding-top:16px}
+.levels{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}
+.levels .code{font-family:var(--display);font-size:1.6rem;font-weight:700;color:var(--accent)}
+.levels .ar-line{font-family:"IBM Plex Sans Arabic",var(--body);direction:rtl;text-align:right}
+.tests{display:flex;flex-direction:column;gap:10px}
+@media (prefers-reduced-motion:no-preference){.week,.switch button,.switch a{transition:background .2s,border-color .2s}}
+</style>
+<script>try{if(localStorage.getItem("esp-look")==="light")document.documentElement.dataset.look="light"}catch(e){}</script>
+</head>
+<body>
+<div class="wrap">
+<header><div class="toprow"><span class="eyebrow">Free 12-week plans · General and Quran English</span><button type="button" class="look-btn" id="look-btn">☀ Light · فاتح</button></div><h1>English Speaking Plans</h1><p class="lead">What is your English level? Choose it to see your two plans.</p><p class="lead ar-line" lang="ar" dir="rtl">ما مستوى لغتك الإنجليزية؟ اختاريه لتظهر لك الخطتان.</p></header>
+<div class="switch levels"><a href="a1/"><small class="last" id="last-a1" hidden>Last opened · آخر ما فُتح</small><span class="code">A1</span><b>Beginner</b><span>You know some words and set phrases, and you can say who you are. You may not read English letters easily yet.</span><span class="ar-line" lang="ar">تعرفين بعض الكلمات والعبارات الجاهزة، وتستطيعين أن تعرّفي بنفسك. وربما لا تقرئين الحروف الإنجليزية بسهولة بعد.</span><em class="go">Open · افتح</em></a><a href="a2/"><small class="last" id="last-a2" hidden>Last opened · آخر ما فُتح</small><span class="code">A2</span><b>Elementary</b><span>You can talk about daily life in short, simple sentences: family, routine, shopping. In a conversation, you still need some help.</span><span class="ar-line" lang="ar">تستطيعين الكلام عن حياتك اليومية بجمل قصيرة وبسيطة: العائلة، والروتين، والتسوق. وفي المحادثة ما زلتِ تحتاجين إلى بعض المساعدة.</span><em class="go">Open · افتح</em></a><a href="b1/"><small class="last" id="last-b1" hidden>Last opened · آخر ما فُتح</small><span class="code">B1</span><b>Intermediate</b><span>You can talk about familiar things like family, work and travel, and describe experiences in simple sentences.</span><span class="ar-line" lang="ar">يمكنك التحدث عن أمور مألوفة مثل الأسرة والعمل والسفر، ووصف تجاربك بجمل بسيطة.</span><em class="go">Open · افتح</em></a><a href="b2/"><small class="last" id="last-b2" hidden>Last opened · آخر ما فُتح</small><span class="code">B2</span><b>Upper intermediate</b><span>You speak fairly fluently on most familiar topics and can explain your point of view.</span><span class="ar-line" lang="ar">تتحدث بطلاقة نسبية في معظم المواضيع المألوفة، وتستطيع شرح وجهة نظرك.</span><em class="go">Open · افتح</em></a><a href="c1/"><small class="last" id="last-c1" hidden>Last opened · آخر ما فُتح</small><span class="code">C1</span><b>Advanced</b><span>You speak fluently and spontaneously, and understand long talks. You now want more precision, natural phrasing and confidence in any situation.</span><span class="ar-line" lang="ar">تتحدث بطلاقة وتلقائية وتفهم المحاضرات الطويلة. هدفك الآن دقة أكبر وتعبيرات أقرب للإنجليزية الطبيعية وثقة في أي موقف.</span><em class="go">Open · افتح</em></a><button type="button" id="unsure"><span class="code">?</span><b>I don't know my level</b><span>Take a free test first, then come back.</span><span class="ar-line" lang="ar">لا أعرف مستواي: خذي اختبارًا مجانيًا أولًا ثم ارجعي.</span><em class="go">Show free tests · اعرض الاختبارات</em></button></div>
+<div class="tests block" id="tests" hidden><h2>Free level tests · اختبارات مستوى مجانية</h2><ul><li><a href="https://www.efset.org" target="_blank" rel="noopener">EF SET</a> · reading and listening, about 50 minutes, gives a CEFR level · قراءة واستماع، نحو 50 دقيقة</li><li><a href="https://learnenglish.britishcouncil.org/test-your-english" target="_blank" rel="noopener">British Council · Test your English</a> · quick online test · اختبار سريع</li><li><a href="https://speakandimprove.com" target="_blank" rel="noopener">Cambridge Speak &amp; Improve</a> · free speaking practice test with an automatic level · اختبار تحدث مجاني</li></ul><p>Not sure between two levels? Choose the lower one: an easy start keeps you going. · <span lang="ar" dir="rtl">إن تردّدتِ بين مستويين فاختاري الأقل: البداية السهلة تساعد على الاستمرار.</span></p></div>
+<footer>Everything in these plans is free. Your ticks are saved only on your phone, in the browser you use. <span lang="ar" dir="rtl">كل ما في الخطط مجاني، وتُحفظ علاماتك على هاتفك فقط.</span></footer>
+</div>
+<script>
+const MEM={};
+function store(k,v){
+  if(v===undefined){try{const x=localStorage.getItem(k);if(x!==null)return x}catch(e){}return MEM[k]===undefined?null:MEM[k]}
+  MEM[k]=v;try{localStorage.setItem(k,v)}catch(e){}
+}
+const last=store("esp-last-level");
+if(last){const t=document.getElementById("last-"+last);if(t)t.hidden=false}
+const tests=document.getElementById("tests");
+document.getElementById("unsure").addEventListener("click",()=>{tests.hidden=!tests.hidden;if(!tests.hidden)tests.scrollIntoView({behavior:"smooth"})});
+const lookBtn=document.getElementById("look-btn");
+function applyLook(look){
+  if(look==="light")document.documentElement.dataset.look="light";else delete document.documentElement.dataset.look;
+  lookBtn.textContent=look==="light"?"☾ Dark · داكن":"☀ Light · فاتح";
+}
+applyLook(store("esp-look")==="light"?"light":"dark");
+lookBtn.addEventListener("click",()=>{const next=document.documentElement.dataset.look==="light"?"dark":"light";store("esp-look",next);applyLook(next)});
+</script>
+</body>
+</html>
